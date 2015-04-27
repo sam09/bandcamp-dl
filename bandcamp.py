@@ -17,7 +17,7 @@ def getData(string):
     startIndex = trackinfo.find("trackinfo:")+len(search)
     endIndex = trackinfo.find("],", startIndex) + len("]")
 
-    parsed = json.loads(p[a:b])[0]
+    parsed = json.loads(trackinfo[startIndex:endIndex])[0]
     stream_url =  parsed["file"]["mp3-128"]
 
     return stream_url
