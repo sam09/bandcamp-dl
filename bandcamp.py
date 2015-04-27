@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup 
-import requests, re, json, urllib, sys
+import requests, re, json, sys
 
 def getVar(url):
   #url = "https://futurecityrecords.bandcamp.com/track/ron-cannon-shock-waves"
