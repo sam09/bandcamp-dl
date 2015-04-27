@@ -26,10 +26,13 @@ def getTrackName(url):
   return track
 
 def writeFile(stream_url, track ):
-  mp3 = open('songs/'+ track + ".mp3", "wb")
-  mp3.write(urllib.urlopen(stream_url).read())
-  mp3.close()
-
+  r = requests.get(stream_url, stream = True)
+  path = "songs/"+track+".mp3"
+  if r.status_code == 200:
+     with open(path, 'wb') as f:
+       for chunk in r.iter_content():
+           f.write(chunk)
+  
 def main():
   url = sys.argv[1]
   string = getVar(url)
