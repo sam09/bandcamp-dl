@@ -8,13 +8,18 @@ def getVar(url):
     string = script.string
     return string
 def getData(string):
-    x = string.find("var TralbumData =")+17
-    y = string.find(";", x)
-    p = string[x:y]
-    a = p.find("trackinfo:")+10
-    b = p.find("],",a)+1
+    search = "var TralbumData = "
+    startIndex =  string.find(search) + len(search)
+    endIndex = string.find(";", startIndex)
+    trackinfo =  string[startIndex:endIndex]
+    
+    search = "trackinfo:"
+    startIndex = trackinfo.find("trackinfo:")+len(search)
+    endIndex = trackinfo.find("],", startIndex) + len("]")
+
     parsed = json.loads(p[a:b])[0]
     stream_url =  parsed["file"]["mp3-128"]
+
     return stream_url
 
 def getTrackName(url):
