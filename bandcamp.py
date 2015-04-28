@@ -7,6 +7,7 @@ def getVar(url):
     script=  soup.find_all("script")[7]
     string = script.string
     return string
+
 def getData(string):
     search = "var TralbumData = "
     startIndex =  string.find(search) + len(search)
@@ -25,9 +26,12 @@ def getData(string):
 def getTrackName(url):
     lst = url.split('/')
     track = lst[4]
-    album = str(lst[2]).split('.')[0]
-    print album
     return track
+
+def getAlbumName(url):
+    lst = url.split('/')
+    album = str(lst[2]).split('.')[0]
+    return album
 
 def writeFile(stream_url, track ):
     r = requests.get(stream_url, stream = True)
