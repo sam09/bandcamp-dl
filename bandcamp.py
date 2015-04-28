@@ -8,7 +8,7 @@ def getVar(url):
     string = script.string
     return string
 
-def getData(string):
+def getUrl(string):
     search = "var TralbumData = "
     startIndex =  string.find(search) + len(search)
     endIndex = string.find(";", startIndex)
@@ -23,6 +23,13 @@ def getData(string):
 
     return stream_url
 
+def getAlbumName(string):
+    search = "album_title : \""
+    startIndex = string.find(search) + len(search)
+    endIndex = string.find("\"", startIndex)
+    albumName = string[startIndex:endIndex]
+    return albumName
+
 def getTrackName(url):
     lst = url.split('/')
     track = lst[4]
@@ -33,7 +40,17 @@ def getArtistName(url):
     artist = str(lst[2]).split('.')[0]
     return artist
 
-def createDir():
+def removeSpecialChars(album):
+    special = [' ' , ':', ',', ',' '(', ')', '-']
+    newName = ""
+    for i in album:
+        if i in special:
+           newName += "_"
+        else:
+           newName += i
+    return newName
+
+def createDir(album, artist):
     path = " "
     if sys.platform == "linux" or sys.platform == "linux2":
         path = "/home/"+ getpass.getuser()+"/Downloads/Bandcamp-dl"
@@ -43,12 +60,21 @@ def createDir():
     if not os.path.exists(path):
         cmd = "mkdir "+ path
         os.system(cmd)
-   
+    path = path + "/" + artist
+    if not os.path.exists(path):
+        cmd = "mkdir " + path
+        os.system(cmd)
+    album = removeSpecialChars(album)
+    path = path + "/" + album
+    if not os.path.exists(path):
+        cmd = "mkdir " + path
+        os.system(cmd)
+
     return path
 
-def writeFile(stream_url, track ):
+def writeFile(stream_url, track, album, artist):
     r = requests.get(stream_url, stream = True)
-    path =  createDir()
+    path =  createDir(album, artist)
     path =  path + "/" + track+".mp3"
     if r.status_code == 200:
         with open(path, 'wb') as f:
@@ -59,8 +85,10 @@ def main():
     url = sys.argv[1]
     string = getVar(url)
     track  = getTrackName(url)
-    stream_url = getData(string)
-    writeFile(stream_url, track)
-  
+    stream_url = getUrl(string)
+    artist = getArtistName(url)
+    album = getAlbumName(string)
+    writeFile(stream_url, track, album, artist)
+ 
 if __name__== "__main__":
     main()
