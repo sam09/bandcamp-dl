@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup 
-import requests, re, json, sys
+import requests, re, json, sys, os, getpass
 
 def getVar(url):
     r = requests.get(url)
@@ -32,10 +32,23 @@ def getAlbumName(url):
     lst = url.split('/')
     album = str(lst[2]).split('.')[0]
     return album
+def createDir():
+    path = " "
+    if sys.platform == "linux" or sys.platform == "linux2":
+        path = "/home/"+ getpass.getuser()+"/Downloads/Bandcamp-dl"
+    elif sys.platform == "win32":
+        path = "C:\Users\\" + getpass.getuser() + "\Downloads\Bandcamp-dl"
+        
+    if not os.path.exists(path):
+        cmd = "mkdir "+ path
+        os.system(cmd)
+   
+    return path
 
 def writeFile(stream_url, track ):
     r = requests.get(stream_url, stream = True)
-    path = "songs/"+track+".mp3"
+    path =  createDir()
+    path =  path + "/" + track+".mp3"
     if r.status_code == 200:
         with open(path, 'wb') as f:
             for chunk in r.iter_content():
