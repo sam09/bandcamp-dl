@@ -2,9 +2,18 @@
 A small command-line program to download tracks from Bandcamp.com 
 
 ==================================================================
-##Usage
-* Download the zip and extract the files
-* Create a folder `songs` at the root of your folder
+###Synopsis
+ `python bandcamp.py <url>`
+
+==================================================================
+##Installation
+* Clone the repo or download the zip
+* Make sure you have pip installed
+* pip install -r requirements.txt
 * On the terminal or Command Prompt Type
-  `python bandcamp.py <url> `
-  
+   `python bandcamp.py <url>`
+
+==================================================================
+###Dependencies
+* BeautifulSoup - HTML parsing
+* Requests - for retrieving HTML
