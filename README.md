@@ -20,4 +20,4 @@ A small command-line program to download tracks from Bandcamp.com
 
 ==================================================================
 ###Note
-All tracks are stored at /home/<user>/Downloads/ on a linux Distribution and at C:\Users\<user>\Downloads\ on Windows
+All tracks are stored at /home/user/Downloads/ on a linux Distribution and at C:\Users\user\Downloads\ on Windows
