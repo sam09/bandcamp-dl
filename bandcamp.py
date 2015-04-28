@@ -28,10 +28,11 @@ def getTrackName(url):
     track = lst[4]
     return track
 
-def getAlbumName(url):
+def getArtistName(url):
     lst = url.split('/')
-    album = str(lst[2]).split('.')[0]
-    return album
+    artist = str(lst[2]).split('.')[0]
+    return artist
+
 def createDir():
     path = " "
     if sys.platform == "linux" or sys.platform == "linux2":
