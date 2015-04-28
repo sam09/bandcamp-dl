@@ -17,3 +17,7 @@ A small command-line program to download tracks from Bandcamp.com
 ###Dependencies
 * BeautifulSoup - HTML parsing
 * Requests - for retrieving HTML
+
+==================================================================
+###Note
+All tracks are stored at /home/<user>/Downloads/ on a linux Distribution and at C:\Users\<user>\Downloads\ on Windows
