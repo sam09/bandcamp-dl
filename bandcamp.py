@@ -65,19 +65,19 @@ def createDir(album, artist):
     elif sys.platform == "win32":
         path = path + "\\" + artist
 
-	if not os.path.exists(path):
+    if not os.path.exists(path):
         cmd = "mkdir " + path
         os.system(cmd)
 
-	album = removeSpecialChars(album)
+    album = removeSpecialChars(album)
 
     if sys.platform == "linux" or sys.platform == "linux2":
         path = path + "/" + album
     elif sys.platform == "win32":
-	    path = path + "\\" + album
+        path = path + "\\" + album
 
-	if not os.path.exists(path):
-	    cmd = "mkdir " + path
+    if not os.path.exists(path):
+        cmd = "mkdir " + path
         os.system(cmd)
 
     return path
