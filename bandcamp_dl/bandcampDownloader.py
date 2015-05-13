@@ -15,12 +15,12 @@ class Downloader():
 		return string
 
 	def get_album_name(self):
-		string = self.response
+		string = self.string
 		search = "album_title : \""
 		startIndex = string.find(search) + len(search)
 		endIndex = string.find("\"", startIndex)
 		albumName = string[startIndex:endIndex]
-		albumName = remove_special_chars(albumName)
+		albumName = self.remove_special_chars(albumName)
 		return albumName
 
 	def get_track_name(self):
@@ -46,7 +46,7 @@ class Downloader():
 		return newName
 
 	def get_stream_url(self):
-		string = self.response
+		string = self.string
 		search = "var TralbumData = "
 		startIndex =  string.find(search) + len(search)
 		endIndex = string.find(";", startIndex)
@@ -62,7 +62,8 @@ class Downloader():
 
 	def write_file(self):
 		r = requests.get(self.stream_url, stream = True)
-		path =  path + "/" + track+".mp3"
+		path = "Songs"
+		path =  path + "/" + self.artist + "_" + self.track+".mp3"
 		if r.status_code == 200:
 			with open(path, 'wb') as f:
 				for chunk in r.iter_content():
@@ -76,7 +77,7 @@ class Downloader():
 		self.stream_url = self.get_stream_url()
 		print "File Found"
 		self.artist = self.get_artist_name()
-		self.album = get_album_name()
+		self.album = self.get_album_name()
 		print "Downloading File"
 		self.write_file()
  
