@@ -27,4 +27,4 @@ A simple module which can download the audio at a particular url on bandcamp.com
 
 ==================================================================
 ###Note
-All tracks are stored at /home/user/Downloads/ on a linux Distribution and at C:\Users\user\Downloads\ on Windows
+All tracks are stored at Songs folder at the current directory
