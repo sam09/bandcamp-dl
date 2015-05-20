@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup 
-import requests, re, json
+import requests, re, json, os
 
 class Downloader():
 
@@ -61,9 +61,13 @@ class Downloader():
 		return stream_url
 
 	def write_file(self):
-		r = requests.get(self.stream_url, stream = True)
 		path = "Songs"
+		if not os.path.exists(path):
+			os.makedirs(path)
+		
 		path =  path + "/" + self.artist + "_" + self.track+".mp3"
+	
+		r = requests.get(self.stream_url, stream = True)	
 		if r.status_code == 200:
 			with open(path, 'wb') as f:
 				for chunk in r.iter_content():
