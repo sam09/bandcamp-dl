@@ -4,10 +4,6 @@ A small command-line program to download tracks from Bandcamp.com
 A simple module which can download the audio at a particular url on bandcamp.com
 
 ==================================================================
-###Synopsis
- `python bandcamp.py <url>`
-
-==================================================================
 ##Installation
 
 ####From Source
@@ -19,6 +15,12 @@ A simple module which can download the audio at a particular url on bandcamp.com
 
 ####Using pip
 * pip install bandcamp_dl
+
+==================================================================
+###Usage
+`from bandcamp_dl import bandcampDownloader`
+`dl = bandcampDownloader.Downloader(url)`
+`dl.download()`
 
 ==================================================================
 ###Dependencies
