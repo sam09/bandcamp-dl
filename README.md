@@ -19,7 +19,9 @@ A simple module which can download the audio at a particular url on bandcamp.com
 ==================================================================
 ###Usage
 `from bandcamp_dl import bandcampDownloader`
+
 `dl = bandcampDownloader.Downloader(url)`
+
 `dl.download()`
 
 ==================================================================
