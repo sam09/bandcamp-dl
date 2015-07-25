@@ -3,9 +3,9 @@
 A simple module which can download the audio at a particular url on bandcamp.com
 
 
-| Version | Downloads |
-| --------| --------- |
- [![Latest Version](https://pypip.in/v/ImageScraper/badge.png)](https://pypi.python.org/pypi/bandcamp_dl/) |[![PyPi downloads](http://img.shields.io/badge/downloads-18k%20total-blue.svg)](https://pypi.python.org/pypi/bandcamp_dl)
+| Downloads |
+| --------- |
+[![PyPi downloads](http://img.shields.io/badge/downloads-20k%20total-blue.svg)](https://pypi.python.org/pypi/bandcamp_dl)
 
 ==================================================================
 ###Installation

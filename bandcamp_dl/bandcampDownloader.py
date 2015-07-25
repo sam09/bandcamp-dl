@@ -65,7 +65,9 @@ class Downloader():
 		if not os.path.exists(path):
 			os.makedirs(path)
 		
-		path =  path + "/" + self.artist + "_" + self.track+".mp3"
+		file_name = self.artist + "_" + self.track+".mp3"
+		path  = os.path.join(path, file_name)
+		print path
 	
 		r = requests.get(self.stream_url, stream = True)	
 		if r.status_code == 200:
