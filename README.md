@@ -42,4 +42,4 @@ All tracks are stored at Songs folder at the current directory
 If you want to add features, improve them, or report issues, feel free to send a pull request!!
 
 #### Author
-[sam09] (https://github.com/sam09) ([Sam Radhakrishnan](https://twitter.com/sam_rk9))
+[sam09](https://github.com/sam09) [Sam Radhakrishnan](https://twitter.com/sam_rk9)
